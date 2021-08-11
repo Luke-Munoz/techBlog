@@ -1,0 +1,29 @@
+{
+    "name": "techblog",
+    "version": "1.0.0",
+    "description": "Making a blog source for developers",
+    "main": "index.js",
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "dotenv": "^10.0.0",
+        "express-handlebars": "^5.3.3",
+        "express-session": "^1.17.2",
+        "mysql2": "^2.3.0",
+        "node": "^16.6.1",
+        "sequelize": "^6.6.5"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Luke-Munoz/techBlog.git"
+    },
+    "author": "Luke",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Luke-Munoz/techBlog/issues"
+    },
+    "homepage": "https://github.com/Luke-Munoz/techBlog#readme"
+}
