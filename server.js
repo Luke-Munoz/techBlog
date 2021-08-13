@@ -1,12 +1,30 @@
 const express = require('express');
 const routes = require('./routes');
 const exphbs = require('express-handlebars')
-const sessions = require('express-session')
     // import sequelize connection
-const sequelize = require('./config/connection');
+const sequelize = require('./configuration/config');
+const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store)
+
+
+
+const sess = {
+    secret: 'Cookie Monster Gonna Eat The Cookies',
+    cookie: {},
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+        db: sequelize
+    })
+};
+
+
+
+
 
 
 const app = express();
+app.use(session(sess));
 const PORT = process.env.PORT || 3001;
 
 app.use(express.json());

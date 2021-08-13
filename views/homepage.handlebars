@@ -1,0 +1,27 @@
+<main>
+    <!--- need to add event listeners to the btns to take them or render the page needed --->
+    <div id="nav">
+        <button type="button" id="homeBtn">Home</button>
+        <button type="button" id="dashboardBtn">Dashboard</button>
+        <button type="button" id="logoutBtn">Logout</button>
+    </div>
+    <div id="title" class="header">
+        <h1 id="techHead">The Tech Blog</h1>
+    </div>
+    <div id="postSections">
+       
+            <!--need to use the helpers and display post that are already made! I have 3 seeded to use! --->
+            {{#each blogs }}
+            <h3>
+                Blog Title: {{title}}
+            </h3>
+            <ul>
+            <li>
+                
+                {{text}}
+            </li>
+            </ul>
+            {{/each}}
+        
+    </div>
+</main>
