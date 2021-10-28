@@ -1,55 +1,53 @@
-const { sign } = require("crypto");
-
-async function login(event) {
+async function loginFormHandler(event) {
     event.preventDefault();
 
-    const username = document.querySelector('#username').value.trim()
-    const password = document.querySelector('#password').value.trim()
+    const email = document.querySelector('#email-login').value.trim();
+    const password = document.querySelector('#password-login').value.trim();
 
-    if (username && password) {
-        // make the routes for it to hit
-        const response = await fetch('/', {
-                method: 'post',
-                body: JSON.stringify({
-                    username,
-                    password
-                }),
-                headers: {}
+    if (email && password) {
+        const response = await fetch('/api/users/login', {
+            method: 'post',
+            body: JSON.stringify({
+                email,
+                password
             }),
-            if (response.ok) {
-                document.location.replace('/dashboard/');
-            } else {
-                alert(response.statusText);
-            }
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (response.ok) {
+            document.location.replace('/');
+        } else {
+            alert(response.statusText);
+        }
     }
 }
 
-async function signUp(event) {
+async function signupFormHandler(event) {
     event.preventDefault();
 
-    const username = document.querySelector('#username-sign').value.trim()
-    const email = document.querySelector('#email-sign').value.trim()
-    const password = document.querySelector('#password-sign').value.trim()
+    const username = document.querySelector('#username-signup').value.trim();
+    const email = document.querySelector('#email-signup').value.trim();
+    const password = document.querySelector('#password-signup').value.trim();
 
     if (username && email && password) {
-        // make routes for it to hit
-        const response = await fetch('', {
+        const response = await fetch('/api/users', {
             method: 'post',
             body: JSON.stringify({
                 username,
                 email,
                 password
             }),
-            headers: {}
+            headers: { 'Content-Type': 'application/json' }
         });
+
         if (response.ok) {
-            document.location.replace('/dashboard/');
+            document.location.replace('/');
         } else {
-            alert(response.statusText)
+            alert(response.statusText);
         }
     }
 }
 
+document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
 
-document.querySelector('.log').addEventListener('submit', login);
-document.querySelector('.sign').addEventListener('submit', signUp);
+document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
