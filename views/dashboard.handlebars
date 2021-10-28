@@ -1,27 +1,29 @@
-<main>
-    <h1>Make a Post</h1>
+<section>
+  <h2>Create New Post</h2>
 
-    <form action="">
-        <div>
-             <label for="title">Title</label>
-            <input type="text" id="titlePost"/>
-        </div>
-        <!--- need to send this information to the database! --->
-        <div>
-             <label for="User-email">Text Content</label>
-            <input type="text" id="postText"/>
-        </div>
-        <!--- add an event listener on this btn to send the info to the data base --->
-        <button type="submit" class="btn">Post!</button>
-    </form>
-</main>
-<footer>
-    
-    
+  <form class="new-post-form">
     <div>
-        <h1>Your Post</h1>
-        <ul>
-            <!--- I need to use helpers to display the users post! --->
-        </ul>
+      <label for="post-title">Title</label>
+      <input type="text" id="post-title" name="post-title" />
     </div>
-</footer>
+    <div>
+      <label for="post-url">Link</label>
+      <input id="post-url" name="post-url" />
+    </div>
+    <button type="submit" class="btn">Create</button>
+  </form>
+</section>
+
+{{#if posts.length}}
+<section>
+  <h2>Your Posts</h2>
+  <ol>
+    {{#each posts as |post|}}
+    <li>
+      {{> post-info post}}
+      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+    </li>
+    {{/each}}
+  </ol>
+</section>
+{{/if}}
